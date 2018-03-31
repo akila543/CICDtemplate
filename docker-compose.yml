@@ -1,0 +1,30 @@
+version: '2'
+services:
+  sonarqube:
+    image: sonarqube
+    restart: always
+    networks:
+      n7:
+        ipv4_address: 172.23.0.9
+    ports:
+      - 9092:9000
+ 
+  jenkins:
+     image: jenkins
+     build: jenkins
+     restart: always
+     networks:
+      n7:
+        ipv4_address: 172.23.0.8
+     ports:
+     - 9094:8080
+     links:
+      - sonarqube
+     
+networks:
+  n7:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.23.0.0/16
+         gateway: 172.23.0.1

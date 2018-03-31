@@ -1,0 +1,9 @@
+- job:
+    name: test
+    description: 'this job is to run the unit test cases'
+    project-type: freestyle
+    builders:
+      - shell: 'mvn test'
+    scm:
+      - git:
+         url: https://github.com/akila543/java_app.git

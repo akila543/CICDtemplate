@@ -1,0 +1,6 @@
+- job:
+    name: deploy
+    description: 'this job is to check out the code from git and build the maven applciation'
+    project-type: freestyle
+    builders:
+     - shell: 'cd /var/jenkins_home/workspace/build && java -cp target/mavenapp-1.0-SNAPSHOT.jar org.akila.App'

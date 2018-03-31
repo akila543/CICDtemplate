@@ -1,0 +1,11 @@
+- job:
+    name: code_quality
+    description: 'automatically created code quality job'
+    project-type: freestyle
+    builders:
+        - sonar:
+                sonar-name: Sonar
+                task: scan
+    scm:
+      - git:
+          url: 'https://github.com/akila543/java_app.git'

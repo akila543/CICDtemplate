@@ -1,0 +1,18 @@
+- job:
+    name: build
+    description: 'this job is to check out the code from git and build the maven applciation'
+    project-type: freestyle
+    builders:
+      - shell: 'mvn clean package'
+    scm:
+      - git:
+         url: https://github.com/akila543/java_app.git
+    triggers:
+      - github
+    publishers:
+      - trigger:
+          project: code_quality
+          threshold: SUCCESS
+      - archive:
+          artifacts: '**/*.jar'
+          allow-empty: 'true'
